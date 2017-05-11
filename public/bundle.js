@@ -68,11 +68,11 @@
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Resume = __webpack_require__(240);
+	var _Resume = __webpack_require__(239);
 
 	var _Resume2 = _interopRequireDefault(_Resume);
 
-	var _Contact = __webpack_require__(239);
+	var _Contact = __webpack_require__(241);
 
 	var _Contact2 = _interopRequireDefault(_Contact);
 
@@ -27013,6 +27013,7 @@
 	});
 	var colors = exports.colors = {
 	  darkGray: '#4D4D4D',
+	  darkGray2: '#999999',
 	  lightGray: '#E7E7E7',
 	  white: '#FFFFFF',
 	  black: '#000000'
@@ -27073,7 +27074,8 @@
 	    cursor: 'pointer',
 	    textAlign: 'center',
 	    paddingTop: '5px',
-	    paddingBottom: '5px'
+	    paddingBottom: '5px',
+	    letterSpacing: '2px'
 	  }
 	};
 
@@ -27524,6 +27526,554 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _styles = __webpack_require__(232);
+
+	var _Layer = __webpack_require__(236);
+
+	var _Layer2 = _interopRequireDefault(_Layer);
+
+	var _Download = __webpack_require__(240);
+
+	var _Download2 = _interopRequireDefault(_Download);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var styles = {
+	  layer1Text: {
+	    paddingLeft: '15px',
+	    paddingRight: '15px',
+	    display: 'inline-block'
+	  },
+	  layer1Container: {
+	    paddingTop: '10px',
+	    paddingBottom: '10px',
+	    textAlign: 'center'
+	  },
+	  layer1: {
+	    letterSpacing: '2px',
+	    backgroundColor: _styles.colors.lightGray
+	  },
+	  layer2: {
+	    backgroundColor: _styles.colors.white
+	  },
+	  item: {
+	    paddingTop: '80px',
+	    paddingBottom: '80px',
+	    width: '49%',
+	    display: 'inline-block',
+	    textAlign: 'center'
+	  },
+	  iconText: {
+	    color: _styles.colors.darkGray,
+	    marginTop: '20px'
+	  },
+	  layer2Text: {
+	    colors: _styles.colors.darkGray,
+	    lineHeight: '30px'
+	  },
+	  resumeTitle: {
+	    letterSpacing: '2px',
+	    color: _styles.colors.black,
+	    fontSize: '21px'
+	  },
+	  resumeSection: {
+	    paddingTop: '40px',
+	    paddingBottom: '20px',
+	    borderBottom: '1px solid ' + _styles.colors.lightGray
+	  },
+	  educationSubText: {
+	    letterSpacing: '1px',
+	    borderRight: '1px solid ' + _styles.colors.darkGray,
+	    color: _styles.colors.darkGray,
+	    display: 'inline-block',
+	    paddingRight: '20px'
+	  },
+	  educationSubText2: {
+	    letterSpacing: '1px',
+	    color: _styles.colors.darkGray,
+	    display: 'inline-block',
+	    paddingLeft: '20px'
+	  },
+	  skillsSection: {
+	    marginTop: '10px'
+	  },
+	  skillsPart: {
+	    width: '49%',
+	    display: 'inline-block',
+	    verticalAlign: 'top'
+	  },
+	  skillsTitle: {
+	    letterSpacing: '1px',
+	    fontSize: '16px',
+	    color: _styles.colors.darkGray
+	  },
+	  ul: {
+	    marginTop: '5px'
+	  },
+	  li: {
+	    letterSpacing: '1px',
+	    color: _styles.colors.darkGray
+	  },
+	  projectsTitle: {
+	    letterSpacing: '1px',
+	    fontSize: '16px',
+	    color: _styles.colors.darkGray,
+	    marginTop: '20px',
+	    textDecoration: 'underLine'
+	  }
+	};
+
+	var programmingLanguages = ['SCALA', 'JAVASCRIPT', 'PYTHON', 'JAVA', 'PHP'];
+	var frontEndTechnologies = ['REACT / REDUX', 'REACT NATIVE', 'HTML', 'CSS', 'JQUERY', 'REACTIVE-X'];
+	var backEndTechnologies = ['FLINK', 'KAFKA', 'NODE', 'DOCKER', 'HTTP4S', 'REST', 'GRAPHQL'];
+	var testingTechnologies = ['UNIT TESTING', 'MOCKITO', 'PROPERTY TESTING', 'JUNIT', 'CUCUMBER'];
+	var databasesTechnologies = ['ELASTICSEARCH', 'MYSQL', 'STARDOG'];
+	var otherTechnologies = ['GIT', 'NPM', 'SBT', 'KUBERNETES', 'JENKINS', 'AGILE', 'LINUX'];
+
+	var financialDashboards = ['Used React, ReactiveX, Node, ES6, and Javascript for Web Development', 'Created reusable components in React for the Application', 'Wrote logic in Javscript to make RESTful calls and manipulate data for Application to use', 'Generated ElasticSearch Queries that powered the data', 'PHP development to integrate the new dashboards within legacy Applications', 'Tested using Jasmine / Jest', 'Created Cucumber / Selenium integration tests'];
+
+	var mobile = ['Used React-Native to help build a mobile application in a time crunch', 'Wrote logic in Javscript to make RESTful calls to APIs and manipulate data for Application to use'];
+
+	var platform = ['Helped implement a Stream Processing platform using Scala, Flink, and Kafka', 'Help make analysis on what data the team needed to supply the projects', 'Performance analysis of databases to decide what to use on projects (Couch vs ES)', 'Extract data from MySQL/MsSQL into Kafka using Flink to transform and load into StarDog', 'API Development /Document so people can interact with our platform', 'Apollo GraphQL to query the database for clients', 'Deployments using YAML, Docker, and Jenkins', 'Taking care of services (looking at logs in Kuburnetes, builds in Jenkins, deployments)'];
+
+	var About = function (_Component) {
+	  _inherits(About, _Component);
+
+	  function About(props) {
+	    _classCallCheck(this, About);
+
+	    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
+	  }
+
+	  _createClass(About, [{
+	    key: 'renderDownload',
+	    value: function renderDownload() {
+	      var layer1 = styles.layer1,
+	          item = styles.item,
+	          iconText = styles.iconText,
+	          layer1Text = styles.layer1Text,
+	          layer1Container = styles.layer1Container;
+
+	      return _react2.default.createElement(
+	        _Layer2.default,
+	        { style: layer1 },
+	        _react2.default.createElement(
+	          'div',
+	          { style: layer1Container },
+	          _react2.default.createElement(
+	            'div',
+	            { style: layer1Text },
+	            'DOWNLOAD'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: layer1Text },
+	            _react2.default.createElement(_Download2.default, { height: 32, width: 32, color: _styles.colors.darkGray })
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'education',
+	    value: function education() {
+	      var resumeTitle = styles.resumeTitle,
+	          resumeSection = styles.resumeSection,
+	          educationSubText = styles.educationSubText,
+	          educationSubText2 = styles.educationSubText2;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: resumeSection },
+	        _react2.default.createElement(
+	          'div',
+	          { style: resumeTitle },
+	          ' EDUCATION '
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { style: educationSubText },
+	            ' UC BERKELEY 2014 '
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: educationSubText2 },
+	            ' B.A. COGNITIVE SCIENCE '
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'skills',
+	    value: function skills() {
+	      var resumeTitle = styles.resumeTitle,
+	          resumeSection = styles.resumeSection,
+	          skillsSection = styles.skillsSection,
+	          skillsPart = styles.skillsPart,
+	          skillsTitle = styles.skillsTitle,
+	          ul = styles.ul,
+	          li = styles.li,
+	          educationSubText = styles.educationSubText,
+	          educationSubText2 = styles.educationSubText2;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: resumeSection },
+	        _react2.default.createElement(
+	          'div',
+	          { style: resumeTitle },
+	          ' SKILLS & TECHNOLOGIES '
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { style: educationSubText },
+	            ' OVERVIEW '
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: educationSubText2 },
+	            ' WHAT I HAVE BEEN DOING '
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: skillsSection },
+	          _react2.default.createElement(
+	            'div',
+	            { style: skillsPart },
+	            _react2.default.createElement(
+	              'div',
+	              { style: skillsTitle },
+	              ' PROGRAMMING LANGUAGES '
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { style: ul },
+	              programmingLanguages.map(function (language) {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { style: li },
+	                  ' ',
+	                  language,
+	                  ' '
+	                );
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: skillsTitle },
+	              ' FRONT END '
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { style: ul },
+	              frontEndTechnologies.map(function (fe) {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { style: li },
+	                  ' ',
+	                  fe,
+	                  ' '
+	                );
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: skillsTitle },
+	              ' BACK END '
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { style: ul },
+	              backEndTechnologies.map(function (be) {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { style: li },
+	                  ' ',
+	                  be,
+	                  ' '
+	                );
+	              })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: skillsPart },
+	            _react2.default.createElement(
+	              'div',
+	              { style: skillsTitle },
+	              ' TESTING '
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { style: ul },
+	              testingTechnologies.map(function (t) {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { style: li },
+	                  ' ',
+	                  t,
+	                  ' '
+	                );
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: skillsTitle },
+	              ' DATABASES '
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { style: ul },
+	              databasesTechnologies.map(function (db) {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { style: li },
+	                  ' ',
+	                  db,
+	                  ' '
+	                );
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: skillsTitle },
+	              ' OTHER '
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { style: ul },
+	              otherTechnologies.map(function (skill) {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { style: li },
+	                  ' ',
+	                  skill,
+	                  ' '
+	                );
+	              })
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'experience',
+	    value: function experience() {
+	      var resumeTitle = styles.resumeTitle,
+	          resumeSection = styles.resumeSection,
+	          educationSubText = styles.educationSubText,
+	          educationSubText2 = styles.educationSubText2,
+	          projectsTitle = styles.projectsTitle,
+	          li = styles.li,
+	          ul = styles.ul;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: resumeSection },
+	        _react2.default.createElement(
+	          'div',
+	          { style: resumeTitle },
+	          ' EXPERIENCE '
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { style: educationSubText },
+	            ' ATHLINKS '
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: educationSubText2 },
+	            ' JULY 17 - PRESENT '
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: projectsTitle },
+	          ' FINANCIAL DASHBOARDS '
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { style: ul },
+	          financialDashboards.map(function (aspect) {
+	            return _react2.default.createElement(
+	              'li',
+	              { style: li },
+	              ' ',
+	              aspect,
+	              ' '
+	            );
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: projectsTitle },
+	          ' MOBILE DEVELOPMENT '
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { style: ul },
+	          mobile.map(function (aspect) {
+	            return _react2.default.createElement(
+	              'li',
+	              { style: li },
+	              ' ',
+	              aspect,
+	              ' '
+	            );
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: projectsTitle },
+	          ' PLATFORM '
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { style: ul },
+	          platform.map(function (aspect) {
+	            return _react2.default.createElement(
+	              'li',
+	              { style: li },
+	              ' ',
+	              aspect,
+	              ' '
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderResume',
+	    value: function renderResume() {
+	      var layer2 = styles.layer2;
+
+	      return _react2.default.createElement(
+	        _Layer2.default,
+	        { style: layer2 },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.education(),
+	          this.skills(),
+	          this.experience()
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var layerOne = this.renderDownload();
+	      var layerTwo = this.renderResume();
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        layerOne,
+	        layerTwo
+	      );
+	    }
+	  }]);
+
+	  return About;
+	}(_react.Component);
+
+	exports.default = About;
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var styles = {
+	  container: {
+	    cursor: 'pointer'
+	  }
+	};
+
+	var Download = function (_Component) {
+	  _inherits(Download, _Component);
+
+	  function Download(props) {
+	    _classCallCheck(this, Download);
+
+	    return _possibleConstructorReturn(this, (Download.__proto__ || Object.getPrototypeOf(Download)).call(this, props));
+	  }
+
+	  _createClass(Download, [{
+	    key: 'render',
+	    value: function render() {
+	      var container = styles.container;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: container },
+	        _react2.default.createElement(
+	          'svg',
+	          { xmlns: 'http://www.w3.org/2000/svg',
+	            fill: this.props.color, height: this.props.height, viewBox: '0 0 24 24', width: this.props.width },
+	          _react2.default.createElement('path', { d: 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z' }),
+	          _react2.default.createElement('path', { d: 'M0 0h24v24H0z', fill: 'none' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Download;
+	}(_react.Component);
+
+	exports.default = Download;
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27556,174 +28106,6 @@
 	}(_react.Component);
 
 	exports.default = Contact;
-
-/***/ }),
-/* 240 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _styles = __webpack_require__(232);
-
-	var _Layer = __webpack_require__(236);
-
-	var _Layer2 = _interopRequireDefault(_Layer);
-
-	var _Download = __webpack_require__(241);
-
-	var _Download2 = _interopRequireDefault(_Download);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var styles = {
-	  layer1Text: {
-	    display: 'inline-block'
-	  },
-	  layer2: {
-	    backgroundColor: _styles.colors.lightGray
-	  },
-	  item: {
-	    paddingTop: '80px',
-	    paddingBottom: '80px',
-	    width: '49%',
-	    display: 'inline-block',
-	    textAlign: 'center'
-	  },
-	  iconText: {
-	    color: _styles.colors.darkGray,
-	    marginTop: '20px'
-	  },
-	  layer2Text: {
-	    colors: _styles.colors.darkGray,
-	    lineHeight: '30px'
-	  }
-	};
-
-	var About = function (_Component) {
-	  _inherits(About, _Component);
-
-	  function About(props) {
-	    _classCallCheck(this, About);
-
-	    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
-	  }
-
-	  _createClass(About, [{
-	    key: 'renderLayer1',
-	    value: function renderLayer1() {
-	      var layer2 = styles.layer2,
-	          item = styles.item,
-	          iconText = styles.iconText,
-	          layer1Text = styles.layer1Text;
-
-	      return _react2.default.createElement(
-	        _Layer2.default,
-	        { style: layer2 },
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'div',
-	            { style: layer1Text },
-	            'DOWNLOAD'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(_Download2.default, { height: 40, width: 40, color: _styles.colors.darkGray })
-	          )
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var layerOne = this.renderLayer1();
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        layerOne
-	      );
-	    }
-	  }]);
-
-	  return About;
-	}(_react.Component);
-
-	exports.default = About;
-
-/***/ }),
-/* 241 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Download = function (_Component) {
-	  _inherits(Download, _Component);
-
-	  function Download(props) {
-	    _classCallCheck(this, Download);
-
-	    return _possibleConstructorReturn(this, (Download.__proto__ || Object.getPrototypeOf(Download)).call(this, props));
-	  }
-
-	  _createClass(Download, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          "svg",
-	          { xmlns: "http://www.w3.org/2000/svg",
-	            fill: this.props.color, height: this.props.height, viewBox: "0 0 24 24", width: this.props.width },
-	          _react2.default.createElement("path", { d: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" }),
-	          _react2.default.createElement("path", { d: "M0 0h24v24H0z", fill: "none" })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Download;
-	}(_react.Component);
-
-	exports.default = Download;
 
 /***/ })
 /******/ ]);

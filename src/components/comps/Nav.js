@@ -24,7 +24,8 @@ const styles = {
     cursor: 'pointer',
     textAlign: 'center',
     paddingTop: '5px',
-    paddingBottom: '5px'
+    paddingBottom: '5px',
+    letterSpacing: '2px'
   }
 };
 
