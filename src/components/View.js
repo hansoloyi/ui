@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from './comps/Header';
+import Nav from './comps/Nav';
 
 export default class View extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export default class View extends Component {
     return (
       <div>
         <Header />
+        <Nav />
         {React.cloneElement(this.props.children)}
       </div>
     );
