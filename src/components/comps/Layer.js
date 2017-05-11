@@ -6,14 +6,14 @@ const styles={
     display: 'block',
     margin:  '0 auto'
   }
-}
+};
 
 export default class Layer extends Component {
   static defaultProps = {
     style: {
       backgroundColor: '#000'
     }
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -27,6 +27,6 @@ export default class Layer extends Component {
           {React.cloneElement(this.props.children)}
         </div>
       </div>
-    )
+    );
   }
 }

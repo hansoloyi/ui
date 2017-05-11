@@ -31,21 +31,21 @@ const styles = {
 const navItems = [
   {
     text: 'HOME',
-    link: ''
+    link: '/'
   },
   {
     text: 'ABOUT',
-    link: ''
+    link: '/about'
   },
   {
     text: 'RESUME',
-    link: ''
+    link: '/resume'
   },
   {
     text: 'CONTACT',
-    link: ''
+    link: '/contact'
   }
-]
+];
 
 export default class Nav extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ export default class Nav extends Component {
       <div style={container}>
         <div style={navContainer}>
           {navItems.map((nav, idx) => {
-            return (<Button key={idx} style={button} text={nav.text}/>)
+            return (<Button key={idx} style={button} text={nav.text} link={nav.link}/>)
           })}
         </div>
       </div>

@@ -7,7 +7,7 @@ const styles = {
     color: colors.black,
     backgroundColor: colors.white
   }
-}
+};
 
 export default class Button extends Component {
   static defaultProps = {
@@ -24,9 +24,9 @@ export default class Button extends Component {
     const { active } = styles;
 
     return (
-      <div style={this.props.style}>
-        <Link to="/" activeStyle={{color: 'white'}}> {this.props.text} </Link>
-      </div>
+      <Link to={this.props.link} onlyActiveOnIndex style={this.props.style} activeStyle={active}>
+        {this.props.text}
+      </Link>
     );
   }
 }
