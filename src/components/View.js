@@ -8,8 +8,8 @@ export default class View extends Component {
     super(props);
     this.state = {
       y: 0
-    }
-    this.setState=this.setState.bind(this);
+    };
+    this.handleScroll=this.handleScroll.bind(this);
   }
 
   componentDidMount() {
@@ -20,11 +20,10 @@ export default class View extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(e) {
+  handleScroll() {
     this.setState({
       y: window.scrollY
-    }).bind(this);
-    console.log(window.scrollY)
+    });
   }
 
   render() {
