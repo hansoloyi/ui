@@ -168,40 +168,40 @@ export default class About extends Component {
           <div style={skillsPart}>
             <div style={skillsTitle}> PROGRAMMING LANGUAGES </div>
             <ul style={ul}>
-              {programmingLanguages.map((language) => {
-                return (<li style={li}> {language} </li>);
+              {programmingLanguages.map((language, idx) => {
+                return (<li style={li} key={idx}> {language} </li>);
               })}
             </ul>
             <div style={skillsTitle}> FRONT END </div>
             <ul style={ul}>
-              {frontEndTechnologies.map((fe) => {
-                return (<li style={li}> {fe} </li>);
+              {frontEndTechnologies.map((fe, idx) => {
+                return (<li style={li} key={idx}> {fe} </li>);
               })}
             </ul>
             <div style={skillsTitle}> BACK END </div>
             <ul style={ul}>
-              {backEndTechnologies.map((be) => {
-                return (<li style={li}> {be} </li>);
+              {backEndTechnologies.map((be, idx) => {
+                return (<li style={li} key={idx}> {be} </li>);
               })}
             </ul>
           </div>
           <div style={skillsPart}>
             <div style={skillsTitle}> TESTING </div>
             <ul style={ul}>
-              {testingTechnologies.map((t) => {
-                return (<li style={li}> {t} </li>);
+              {testingTechnologies.map((t, idx) => {
+                return (<li style={li} key={idx}> {t} </li>);
               })}
             </ul>
             <div style={skillsTitle}> DATABASES </div>
             <ul style={ul}>
-              {databasesTechnologies.map((db) => {
-                return (<li style={li}> {db} </li>);
+              {databasesTechnologies.map((db, idx) => {
+                return (<li style={li} key={idx}> {db} </li>);
               })}
             </ul>
             <div style={skillsTitle}> OTHER </div>
             <ul style={ul}>
-              {otherTechnologies.map((skill) => {
-                return (<li style={li}> {skill} </li>);
+              {otherTechnologies.map((skill, idx) => {
+                return (<li style={li} key={idx}> {skill} </li>);
               })}
             </ul>
           </div>
@@ -221,20 +221,20 @@ export default class About extends Component {
         </div>
         <div style={projectsTitle}> FINANCIAL DASHBOARDS </div>
         <ul style={ul}>
-          {financialDashboards.map((aspect) => {
-            return (<li style={li}> {aspect} </li>);
+          {financialDashboards.map((aspect, idx) => {
+            return (<li style={li} key={idx}> {aspect} </li>);
           })}
         </ul>
         <div style={projectsTitle}> MOBILE DEVELOPMENT </div>
         <ul style={ul}>
-          {mobile.map((aspect) => {
-            return (<li style={li}> {aspect} </li>);
+          {mobile.map((aspect, idx) => {
+            return (<li style={li} key={idx}> {aspect} </li>);
           })}
         </ul>
         <div style={projectsTitle}> PLATFORM </div>
         <ul style={ul}>
-          {platform.map((aspect) => {
-            return (<li style={li}> {aspect} </li>);
+          {platform.map((aspect, idx) => {
+            return (<li style={li} key={idx}> {aspect} </li>);
           })}
         </ul>
       </div>

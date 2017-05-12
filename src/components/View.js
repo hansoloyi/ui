@@ -27,7 +27,6 @@ export default class View extends Component {
   }
 
   render() {
-    console.log(window.scrollY)
     return (
       <div>
         <Header />

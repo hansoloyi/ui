@@ -26917,7 +26917,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(window.scrollY);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27957,6 +27956,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Layer = __webpack_require__(238);
+
+	var _Layer2 = _interopRequireDefault(_Layer);
+
+	var _styles = __webpack_require__(232);
+
+	var _blog = __webpack_require__(249);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27964,6 +27971,49 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var styles = {
+	  container: {
+	    backgroundColor: _styles.colors.lightGray
+	  },
+	  layer: {
+	    backgroundColor: _styles.colors.white
+	  },
+	  item: {
+	    paddingTop: '15px',
+	    paddingBottom: '15px',
+	    textAlign: 'center',
+	    letterSpacing: '2px'
+	  },
+	  blogTitle: {
+	    letterSpacing: '2px',
+	    color: _styles.colors.black,
+	    fontSize: '21px'
+	  },
+	  blogSection: {
+	    paddingTop: '40px',
+	    paddingBottom: '20px',
+	    borderBottom: '1px solid ' + _styles.colors.lightGray
+	  },
+	  blogSubText: {
+	    letterSpacing: '1px',
+	    borderRight: '1px solid ' + _styles.colors.darkGray,
+	    color: _styles.colors.darkGray,
+	    display: 'inline-block',
+	    paddingRight: '20px'
+	  },
+	  blogSubText2: {
+	    letterSpacing: '1px',
+	    color: _styles.colors.darkGray,
+	    display: 'inline-block',
+	    paddingLeft: '20px'
+	  },
+	  wholeBlog: {
+	    marginTop: '20px',
+	    letterSpacing: '1px',
+	    color: _styles.colors.darkGray
+	  }
+	};
 
 	var Blog = function (_Component) {
 	  _inherits(Blog, _Component);
@@ -27975,12 +28025,78 @@
 	  }
 
 	  _createClass(Blog, [{
-	    key: 'render',
-	    value: function render() {
+	    key: 'blog1',
+	    value: function blog1() {
+	      var blogTitle = styles.blogTitle,
+	          blogSection = styles.blogSection,
+	          blogSubText = styles.blogSubText,
+	          blogSubText2 = styles.blogSubText2,
+	          wholeBlog = styles.wholeBlog;
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Blog'
+	        _react2.default.createElement(
+	          'div',
+	          { style: blogSection },
+	          _react2.default.createElement(
+	            'div',
+	            { style: blogTitle },
+	            ' MY FIRST POST '
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'div',
+	              { style: blogSubText },
+	              ' MAY 2017 '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: blogSubText2 },
+	              ' HELLO WORLD '
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: wholeBlog },
+	          ' ',
+	          _blog.blog,
+	          ' '
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var first = this.blog1();
+	      var container = styles.container,
+	          item = styles.item,
+	          layer = styles.layer;
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _Layer2.default,
+	          { style: container },
+	          _react2.default.createElement(
+	            'div',
+	            { style: item },
+	            'MY THOUGHTS'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _Layer2.default,
+	          { style: layer },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            first
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -28241,10 +28357,10 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { style: ul },
-	              programmingLanguages.map(function (language) {
+	              programmingLanguages.map(function (language, idx) {
 	                return _react2.default.createElement(
 	                  'li',
-	                  { style: li },
+	                  { style: li, key: idx },
 	                  ' ',
 	                  language,
 	                  ' '
@@ -28259,10 +28375,10 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { style: ul },
-	              frontEndTechnologies.map(function (fe) {
+	              frontEndTechnologies.map(function (fe, idx) {
 	                return _react2.default.createElement(
 	                  'li',
-	                  { style: li },
+	                  { style: li, key: idx },
 	                  ' ',
 	                  fe,
 	                  ' '
@@ -28277,10 +28393,10 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { style: ul },
-	              backEndTechnologies.map(function (be) {
+	              backEndTechnologies.map(function (be, idx) {
 	                return _react2.default.createElement(
 	                  'li',
-	                  { style: li },
+	                  { style: li, key: idx },
 	                  ' ',
 	                  be,
 	                  ' '
@@ -28299,10 +28415,10 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { style: ul },
-	              testingTechnologies.map(function (t) {
+	              testingTechnologies.map(function (t, idx) {
 	                return _react2.default.createElement(
 	                  'li',
-	                  { style: li },
+	                  { style: li, key: idx },
 	                  ' ',
 	                  t,
 	                  ' '
@@ -28317,10 +28433,10 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { style: ul },
-	              databasesTechnologies.map(function (db) {
+	              databasesTechnologies.map(function (db, idx) {
 	                return _react2.default.createElement(
 	                  'li',
-	                  { style: li },
+	                  { style: li, key: idx },
 	                  ' ',
 	                  db,
 	                  ' '
@@ -28335,10 +28451,10 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { style: ul },
-	              otherTechnologies.map(function (skill) {
+	              otherTechnologies.map(function (skill, idx) {
 	                return _react2.default.createElement(
 	                  'li',
-	                  { style: li },
+	                  { style: li, key: idx },
 	                  ' ',
 	                  skill,
 	                  ' '
@@ -28390,10 +28506,10 @@
 	        _react2.default.createElement(
 	          'ul',
 	          { style: ul },
-	          financialDashboards.map(function (aspect) {
+	          financialDashboards.map(function (aspect, idx) {
 	            return _react2.default.createElement(
 	              'li',
-	              { style: li },
+	              { style: li, key: idx },
 	              ' ',
 	              aspect,
 	              ' '
@@ -28408,10 +28524,10 @@
 	        _react2.default.createElement(
 	          'ul',
 	          { style: ul },
-	          mobile.map(function (aspect) {
+	          mobile.map(function (aspect, idx) {
 	            return _react2.default.createElement(
 	              'li',
-	              { style: li },
+	              { style: li, key: idx },
 	              ' ',
 	              aspect,
 	              ' '
@@ -28426,10 +28542,10 @@
 	        _react2.default.createElement(
 	          'ul',
 	          { style: ul },
-	          platform.map(function (aspect) {
+	          platform.map(function (aspect, idx) {
 	            return _react2.default.createElement(
 	              'li',
-	              { style: li },
+	              { style: li, key: idx },
 	              ' ',
 	              aspect,
 	              ' '
@@ -29015,6 +29131,17 @@
 	  style: {}
 	}, _temp);
 	exports.default = Phone;
+
+/***/ }),
+/* 249 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var blog = exports.blog = "hello world";
 
 /***/ })
 /******/ ]);
