@@ -27247,6 +27247,8 @@
 
 	var _Up2 = _interopRequireDefault(_Up);
 
+	var _styles = __webpack_require__(232);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27276,7 +27278,8 @@
 
 	    _this.scrollTop = _this.scrollTop.bind(_this);
 	    _this.state = {
-	      intervalId: 0
+	      intervalId: 0,
+	      hovered: false
 	    };
 	    return _this;
 	  }
@@ -27296,13 +27299,26 @@
 	      this.setState({ intervalId: intervalId });
 	    }
 	  }, {
+	    key: 'onMouseOver',
+	    value: function onMouseOver() {
+	      this.setState({ hovered: true });
+	    }
+	  }, {
+	    key: 'onMouseOut',
+	    value: function onMouseOut() {
+	      this.setState({ hovered: false });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var container = styles.container;
 
+	      var sty = this.state.hovered ? Object.assign({}, container, { backgroundColor: _styles.colors.lightGray, color: _styles.colors.darkGray }) : container;
 	      return _react2.default.createElement(
 	        'div',
-	        { style: container, onClick: this.scrollTop },
+	        { style: sty, onClick: this.scrollTop,
+	          onMouseOver: this.onMouseOver.bind(this),
+	          onMouseOut: this.onMouseOut.bind(this) },
 	        _react2.default.createElement(_Up2.default, { width: 70, height: 70 })
 	      );
 	    }
