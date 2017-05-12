@@ -35,12 +35,12 @@ const navItems = [
     link: '/'
   },
   {
-    text: 'BLOG',
-    link: '/blog'
-  },
-  {
     text: 'RESUME',
     link: '/resume'
+  },
+  {
+    text: 'BLOG',
+    link: '/blog'
   },
   {
     text: 'CONTACT',
