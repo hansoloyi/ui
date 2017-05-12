@@ -18,6 +18,10 @@ body {
   margin:0;
 }
 
+#me {
+  border-radius: 100%;
+}
+
 /*
  * This is gross and not desirable but it's the only way to safely add these
  * from our project

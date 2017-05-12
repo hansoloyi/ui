@@ -64,9 +64,9 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _About = __webpack_require__(238);
+	var _Blog = __webpack_require__(242);
 
-	var _About2 = _interopRequireDefault(_About);
+	var _Blog2 = _interopRequireDefault(_Blog);
 
 	var _Resume = __webpack_require__(239);
 
@@ -84,7 +84,7 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _View2.default },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/blog', component: _Blog2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/resume', component: _Resume2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/contact', component: _Contact2.default }),
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default })
@@ -20409,20 +20409,6 @@
 	      return emptyFunction.thatReturnsNull;
 	    }
 
-	    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-	      var checker = arrayOfTypeCheckers[i];
-	      if (typeof checker !== 'function') {
-	        warning(
-	          false,
-	          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
-	          'received %s at index %s.',
-	          getPostfixForTypeWarning(checker),
-	          i
-	        );
-	        return emptyFunction.thatReturnsNull;
-	      }
-	    }
-
 	    function validate(props, propName, componentName, location, propFullName) {
 	      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
 	        var checker = arrayOfTypeCheckers[i];
@@ -20555,9 +20541,6 @@
 	  // This handles more types than `getPropType`. Only used for error messages.
 	  // See `createPrimitiveTypeChecker`.
 	  function getPreciseType(propValue) {
-	    if (typeof propValue === 'undefined' || propValue === null) {
-	      return '' + propValue;
-	    }
 	    var propType = getPropType(propValue);
 	    if (propType === 'object') {
 	      if (propValue instanceof Date) {
@@ -20567,23 +20550,6 @@
 	      }
 	    }
 	    return propType;
-	  }
-
-	  // Returns a string that is postfixed to a warning about an invalid type.
-	  // For example, "undefined" or "of type array"
-	  function getPostfixForTypeWarning(value) {
-	    var type = getPreciseType(value);
-	    switch (type) {
-	      case 'array':
-	      case 'object':
-	        return 'an ' + type;
-	      case 'boolean':
-	      case 'date':
-	      case 'regexp':
-	        return 'a ' + type;
-	      default:
-	        return type;
-	    }
 	  }
 
 	  // Returns class name of the object, if any.
@@ -27080,11 +27046,11 @@
 	};
 
 	var navItems = [{
-	  text: 'HOME',
+	  text: 'ABOUT',
 	  link: '/'
 	}, {
-	  text: 'ABOUT',
-	  link: '/about'
+	  text: 'BLOG',
+	  link: '/blog'
 	}, {
 	  text: 'RESUME',
 	  link: '/resume'
@@ -27224,6 +27190,10 @@
 
 	var _Pin2 = _interopRequireDefault(_Pin);
 
+	var _Code = __webpack_require__(243);
+
+	var _Code2 = _interopRequireDefault(_Code);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27233,12 +27203,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var styles = {
-	  layer1: {
-	    backgroundColor: _styles.colors.black
-	  },
-	  layer2: {
-	    backgroundColor: _styles.colors.lightGray
-	  },
 	  item: {
 	    paddingTop: '80px',
 	    paddingBottom: '80px',
@@ -27246,13 +27210,77 @@
 	    display: 'inline-block',
 	    textAlign: 'center'
 	  },
-	  iconText: {
-	    color: _styles.colors.darkGray,
-	    marginTop: '20px'
+	  meItem: {
+	    paddingTop: '40px',
+	    paddingBottom: '40px',
+	    width: '49%',
+	    display: 'inline-block',
+	    textAlign: 'center'
 	  },
-	  layer2Text: {
+	  me: {
+	    backgroundColor: _styles.colors.lightGray
+	  },
+	  meText: {
 	    colors: _styles.colors.darkGray,
-	    lineHeight: '30px'
+	    lineHeight: '30px',
+	    letterSpacing: '1px'
+	  },
+	  meImg: {
+	    width: '50%',
+	    display: 'block',
+	    margin: '0 auto'
+	  },
+	  summary: {
+	    backgroundColor: _styles.colors.darkGray
+	  },
+	  summaryText: {
+	    color: _styles.colors.lightGray,
+	    lineHeight: '30px',
+	    letterSpacing: '1px'
+	  },
+	  summaryIconText: {
+	    color: _styles.colors.lightGray,
+	    marginTop: '20px',
+	    letterSpacing: '1px'
+	  },
+	  location: {
+	    backgroundColor: _styles.colors.white
+	  },
+	  locationText: {
+	    color: _styles.colors.black,
+	    lineHeight: '30px',
+	    letterSpacing: '1px'
+	  },
+	  locationIconText: {
+	    color: _styles.colors.black,
+	    marginTop: '20px',
+	    letterSpacing: '1px'
+	  },
+	  hobbies: {
+	    backgroundColor: _styles.colors.white
+	  },
+	  hobbiesItem: {
+	    paddingTop: '40px',
+	    paddingBottom: '40px',
+	    width: '32%',
+	    display: 'inline-block',
+	    textAlign: 'center'
+	  },
+	  hobbiesImg: {
+	    border: '3px solid ' + _styles.colors.black,
+	    display: 'block',
+	    margin: '0 auto',
+	    width: '70%'
+	  },
+	  hobbiesTitle: {
+	    marginTop: '40px',
+	    textAlign: 'center',
+	    fontSize: '20px',
+	    letterSpacing: '2px'
+	  },
+	  hobbiesText: {
+	    marginTop: '10px',
+	    letterSpacing: '1px'
 	  }
 	};
 
@@ -27266,27 +27294,68 @@
 	  }
 
 	  _createClass(Home, [{
-	    key: 'renderLayer2',
-	    value: function renderLayer2() {
-	      var layer2 = styles.layer2,
+	    key: 'renderMe',
+	    value: function renderMe() {
+	      var me = styles.me,
+	          meImg = styles.meImg,
 	          item = styles.item,
-	          iconText = styles.iconText,
-	          layer2Text = styles.layer2Text;
+	          meText = styles.meText,
+	          meItem = styles.meItem;
 
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: layer2 },
+	        { style: me },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { style: meItem },
+	            _react2.default.createElement(
+	              'div',
+	              { style: meImg },
+	              _react2.default.createElement('img', { src: '/images/hansol.png', width: '100%', id: 'me' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: meItem },
+	            _react2.default.createElement(
+	              'div',
+	              { style: meText },
+	              ' HELLO WORLD, '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: meText },
+	              ' I\'M HANSOL '
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderSummary',
+	    value: function renderSummary() {
+	      var summary = styles.summary,
+	          item = styles.item,
+	          summaryIconText = styles.summaryIconText,
+	          summaryText = styles.summaryText;
+
+	      return _react2.default.createElement(
+	        _Layer2.default,
+	        { style: summary },
 	        _react2.default.createElement(
 	          'div',
 	          null,
 	          _react2.default.createElement(
 	            'div',
 	            { style: item },
-	            _react2.default.createElement(_Pin2.default, { color: _styles.colors.darkGray, height: 50, width: 50 }),
+	            _react2.default.createElement(_Code2.default, { color: _styles.colors.lightGray, height: 50, width: 50 }),
 	            _react2.default.createElement(
 	              'div',
-	              { style: iconText },
-	              ' DENVER, CO '
+	              { style: summaryIconText },
+	              ' FULL STACK ENGINEER '
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -27294,18 +27363,134 @@
 	            { style: item },
 	            _react2.default.createElement(
 	              'div',
-	              { style: layer2Text },
+	              { style: summaryText },
+	              ' FROM MAKING A UI LOOK PRETTY '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: summaryText },
+	              ' TO STREAM PROCESSING '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: summaryText },
+	              ' I JUST LIKE BUILDING COOL THINGS '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: summaryText },
+	              ' LOOKING FOR THE NEXT BIG IDEA '
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderHobbies',
+	    value: function renderHobbies() {
+	      var hobbies = styles.hobbies,
+	          hobbiesItem = styles.hobbiesItem,
+	          hobbiesImg = styles.hobbiesImg,
+	          hobbiesTitle = styles.hobbiesTitle,
+	          hobbiesText = styles.hobbiesText;
+
+	      return _react2.default.createElement(
+	        _Layer2.default,
+	        { style: hobbies },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { style: hobbiesTitle },
+	            ' SOME THINGS I LIKE TO DO '
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: hobbiesItem },
+	            _react2.default.createElement(
+	              'div',
+	              { style: hobbiesImg },
+	              _react2.default.createElement('img', { src: '/images/snow.png', width: '100%', height: '300px' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: hobbiesText },
+	              ' SNOWBOARDING '
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: hobbiesItem },
+	            _react2.default.createElement(
+	              'div',
+	              { style: hobbiesImg },
+	              _react2.default.createElement('img', { src: '/images/beer.png', width: '100%', height: '300px' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: hobbiesText },
+	              ' A NICE COLD ONE '
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: hobbiesItem },
+	            _react2.default.createElement(
+	              'div',
+	              { style: hobbiesImg },
+	              _react2.default.createElement('img', { src: '/images/sports.png', width: '100%', height: '300px' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: hobbiesText },
+	              ' TEAM ACTIVITIES '
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderLocation',
+	    value: function renderLocation() {
+	      var location = styles.location,
+	          item = styles.item,
+	          locationIconText = styles.locationIconText,
+	          locationText = styles.locationText;
+
+	      return _react2.default.createElement(
+	        _Layer2.default,
+	        { style: location },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { style: item },
+	            _react2.default.createElement(
+	              'div',
+	              { style: locationText },
 	              ' BORN IN KOREA '
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { style: layer2Text },
+	              { style: locationText },
 	              ' SAN DIEGO RAISED '
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { style: layer2Text },
+	              { style: locationText },
 	              ' DENVER RESIDING '
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { style: item },
+	            _react2.default.createElement(_Pin2.default, { color: _styles.colors.black, height: 50, width: 50 }),
+	            _react2.default.createElement(
+	              'div',
+	              { style: locationIconText },
+	              ' DENVER, CO '
 	            )
 	          )
 	        )
@@ -27314,11 +27499,17 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var layerTwo = this.renderLayer2();
+	      var me = this.renderMe();
+	      var summary = this.renderSummary();
+	      var location = this.renderLocation();
+	      var hobbies = this.renderHobbies();
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        layerTwo
+	        me,
+	        location,
+	        summary,
+	        hobbies
 	      );
 	    }
 	  }]);
@@ -27460,56 +27651,7 @@
 	exports.default = Pin;
 
 /***/ }),
-/* 238 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var About = function (_Component) {
-	  _inherits(About, _Component);
-
-	  function About(props) {
-	    _classCallCheck(this, About);
-
-	    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
-	  }
-
-	  _createClass(About, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'About'
-	      );
-	    }
-	  }]);
-
-	  return About;
-	}(_react.Component);
-
-	exports.default = About;
-
-/***/ }),
+/* 238 */,
 /* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28006,6 +28148,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _class, _temp;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -28024,7 +28168,7 @@
 	  }
 	};
 
-	var Download = function (_Component) {
+	var Download = (_temp = _class = function (_Component) {
 	  _inherits(Download, _Component);
 
 	  function Download(props) {
@@ -28053,8 +28197,12 @@
 	  }]);
 
 	  return Download;
-	}(_react.Component);
-
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {}
+	}, _temp);
 	exports.default = Download;
 
 /***/ }),
@@ -28106,6 +28254,118 @@
 	}(_react.Component);
 
 	exports.default = Contact;
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Blog = function (_Component) {
+	  _inherits(Blog, _Component);
+
+	  function Blog(props) {
+	    _classCallCheck(this, Blog);
+
+	    return _possibleConstructorReturn(this, (Blog.__proto__ || Object.getPrototypeOf(Blog)).call(this, props));
+	  }
+
+	  _createClass(Blog, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        'Blog'
+	      );
+	    }
+	  }]);
+
+	  return Blog;
+	}(_react.Component);
+
+	exports.default = Blog;
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _class, _temp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Code = (_temp = _class = function (_Component) {
+	  _inherits(Code, _Component);
+
+	  function Code(props) {
+	    _classCallCheck(this, Code);
+
+	    return _possibleConstructorReturn(this, (Code.__proto__ || Object.getPrototypeOf(Code)).call(this, props));
+	  }
+
+	  _createClass(Code, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { style: this.props.style },
+	        _react2.default.createElement(
+	          "svg",
+	          { xmlns: "http://www.w3.org/2000/svg",
+	            fill: this.props.color, height: this.props.height, viewBox: "0 0 24 24", width: this.props.width },
+	          _react2.default.createElement("path", { d: "M0 0h24v24H0V0z", fill: "none" }),
+	          _react2.default.createElement("path", { d: "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Code;
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {}
+	}, _temp);
+	exports.default = Code;
 
 /***/ })
 /******/ ]);

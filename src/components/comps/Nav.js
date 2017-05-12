@@ -31,12 +31,12 @@ const styles = {
 
 const navItems = [
   {
-    text: 'HOME',
+    text: 'ABOUT',
     link: '/'
   },
   {
-    text: 'ABOUT',
-    link: '/about'
+    text: 'BLOG',
+    link: '/blog'
   },
   {
     text: 'RESUME',
