@@ -46,7 +46,7 @@ export default class TopButton extends Component {
   render() {
     const { container } = styles;
     const sty = (this.state.hovered)
-      ? Object.assign({}, container, { backgroundColor: colors.lightGray, color: colors.darkGray })
+      ? Object.assign({}, container, { backgroundColor: colors.lightGray, color: colors.darkGray, opacity: '.6' })
       : container;
     return (
       <div style={sty} onClick={this.scrollTop}

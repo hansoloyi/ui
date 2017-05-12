@@ -103,7 +103,7 @@ export default class Home extends Component {
           </div>
           <div style={meItem}>
             <div style={meText}> HELLO WORLD, </div>
-            <div style={meText}> I'M HANSOL </div>
+            <div style={meText}> I&#39;M HANSOL </div>
           </div>
         </div>
       </Layer>

@@ -27313,7 +27313,7 @@
 	    value: function render() {
 	      var container = styles.container;
 
-	      var sty = this.state.hovered ? Object.assign({}, container, { backgroundColor: _styles.colors.lightGray, color: _styles.colors.darkGray }) : container;
+	      var sty = this.state.hovered ? Object.assign({}, container, { backgroundColor: _styles.colors.lightGray, color: _styles.colors.darkGray, opacity: '.6' }) : container;
 	      return _react2.default.createElement(
 	        'div',
 	        { style: sty, onClick: this.scrollTop,
@@ -28561,6 +28561,28 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Layer = __webpack_require__(238);
+
+	var _Layer2 = _interopRequireDefault(_Layer);
+
+	var _styles = __webpack_require__(232);
+
+	var _Facebook = __webpack_require__(245);
+
+	var _Facebook2 = _interopRequireDefault(_Facebook);
+
+	var _Linkedin = __webpack_require__(246);
+
+	var _Linkedin2 = _interopRequireDefault(_Linkedin);
+
+	var _Email = __webpack_require__(247);
+
+	var _Email2 = _interopRequireDefault(_Email);
+
+	var _Phone = __webpack_require__(248);
+
+	var _Phone2 = _interopRequireDefault(_Phone);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28569,22 +28591,174 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var styles = {
+	  contact: {
+	    backgroundColor: _styles.colors.lightGray
+	  },
+	  item: {
+	    paddingTop: '15px',
+	    paddingBottom: '15px',
+	    textAlign: 'center',
+	    letterSpacing: '2px'
+	  },
+	  medias: {
+	    backgroundColor: _styles.colors.white,
+	    paddingTop: '40px',
+	    paddingBottom: '40px'
+	  },
+	  mediaItem: {
+	    marginTop: '50px',
+	    marginLeft: '5%',
+	    textAlign: 'left',
+	    letterSpacing: '2px'
+	  },
+	  mediaText: {
+	    marginTop: '10px'
+	  },
+	  mediaSub: {
+	    display: 'inline-block',
+	    marginRight: '5%'
+	  },
+	  button: {
+	    cursor: 'pointer'
+	  }
+	};
+
 	var Contact = function (_Component) {
 	  _inherits(Contact, _Component);
 
 	  function Contact(props) {
 	    _classCallCheck(this, Contact);
 
-	    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
+
+	    _this.state = {
+	      emailHovered: false,
+	      fbHovered: false,
+	      liHovered: false,
+	      phoneHovered: false
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Contact, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var contact = styles.contact,
+	          item = styles.item,
+	          medias = styles.medias,
+	          mediaItem = styles.mediaItem,
+	          mediaText = styles.mediaText,
+	          mediaSub = styles.mediaSub,
+	          button = styles.button;
+
+	      var hover = Object.assign({}, mediaSub, { display: 'none' });
+	      var emailHovered = this.state.emailHovered ? mediaSub : hover;
+	      var fbHovered = this.state.fbHovered ? mediaSub : hover;
+	      var liHovered = this.state.liHovered ? mediaSub : hover;
+	      var phoneHovered = this.state.phoneHovered ? mediaSub : hover;
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Contact'
+	        _react2.default.createElement(
+	          _Layer2.default,
+	          { style: contact },
+	          _react2.default.createElement(
+	            'div',
+	            { style: item },
+	            'CALL ME, BEEP ME IF YOU WANT TO REACH ME'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _Layer2.default,
+	          { style: medias },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'div',
+	              { style: mediaItem,
+	                onMouseOver: function onMouseOver() {
+	                  return _this2.setState({ emailHovered: true });
+	                },
+	                onMouseOut: function onMouseOut() {
+	                  return _this2.setState({ emailHovered: false });
+	                } },
+	              _react2.default.createElement(
+	                'div',
+	                { style: mediaSub },
+	                _react2.default.createElement(_Email2.default, { width: 60, height: 60, color: '#000', style: button })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: emailHovered },
+	                'HANSOLO.YI@GMAIL.COM (COPY AND PASTE)'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: mediaItem,
+	                onMouseOver: function onMouseOver() {
+	                  return _this2.setState({ fbHovered: true });
+	                },
+	                onMouseOut: function onMouseOut() {
+	                  return _this2.setState({ fbHovered: false });
+	                } },
+	              _react2.default.createElement(
+	                'div',
+	                { style: mediaSub },
+	                _react2.default.createElement(_Facebook2.default, { width: 50, height: 50, color: '#000', style: button })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: fbHovered },
+	                'NON PROFESSIONAL INQUIRIES'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: mediaItem,
+	                onMouseOver: function onMouseOver() {
+	                  return _this2.setState({ liHovered: true });
+	                },
+	                onMouseOut: function onMouseOut() {
+	                  return _this2.setState({ liHovered: false });
+	                } },
+	              _react2.default.createElement(
+	                'div',
+	                { style: mediaSub },
+	                _react2.default.createElement(_Linkedin2.default, { width: 50, height: 50, color: '#000', style: button })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: liHovered },
+	                'PROFESSIONAL INQUIRIES'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { style: mediaItem,
+	                onMouseOver: function onMouseOver() {
+	                  return _this2.setState({ phoneHovered: true });
+	                },
+	                onMouseOut: function onMouseOut() {
+	                  return _this2.setState({ phoneHovered: false });
+	                } },
+	              _react2.default.createElement(
+	                'div',
+	                { style: mediaSub },
+	                _react2.default.createElement(_Phone2.default, { width: 60, height: 60, color: '#000', style: button })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: phoneHovered },
+	                'JUST KIDDING DON\'T CALL ME'
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -28593,6 +28767,254 @@
 	}(_react.Component);
 
 	exports.default = Contact;
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _class, _temp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(159);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Facebook = (_temp = _class = function (_Component) {
+	  _inherits(Facebook, _Component);
+
+	  function Facebook(props) {
+	    _classCallCheck(this, Facebook);
+
+	    return _possibleConstructorReturn(this, (Facebook.__proto__ || Object.getPrototypeOf(Facebook)).call(this, props));
+	  }
+
+	  _createClass(Facebook, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { style: this.props.style, onClick: function onClick() {
+	            return window.open("https://www.facebook.com/hansol.biggy", "_blank");
+	          } },
+	        _react2.default.createElement(
+	          'svg',
+	          { xmlns: 'http://www.w3.org/2000/svg', width: this.props.width, height: this.props.height, viewBox: '0 0 24 24', fill: this.props.color },
+	          _react2.default.createElement('path', { d: 'M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Facebook;
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {}
+	}, _temp);
+	exports.default = Facebook;
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _class, _temp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Linkedin = (_temp = _class = function (_Component) {
+	  _inherits(Linkedin, _Component);
+
+	  function Linkedin(props) {
+	    _classCallCheck(this, Linkedin);
+
+	    return _possibleConstructorReturn(this, (Linkedin.__proto__ || Object.getPrototypeOf(Linkedin)).call(this, props));
+	  }
+
+	  _createClass(Linkedin, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { style: this.props.style, onClick: function onClick() {
+	            return window.open("https://www.linkedin.com/in/hansol-yi-758946b9/", "_blank");
+	          } },
+	        _react2.default.createElement(
+	          "svg",
+	          { xmlns: "http://www.w3.org/2000/svg", width: this.props.width, height: this.props.height, viewBox: "0 0 24 24", fill: this.props.color },
+	          _react2.default.createElement("path", { d: "M0 0v24h24v-24h-24zm8 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.397-2.586 7-2.777 7 2.476v6.759z" })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Linkedin;
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {}
+	}, _temp);
+	exports.default = Linkedin;
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _class, _temp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Email = (_temp = _class = function (_Component) {
+	  _inherits(Email, _Component);
+
+	  function Email(props) {
+	    _classCallCheck(this, Email);
+
+	    return _possibleConstructorReturn(this, (Email.__proto__ || Object.getPrototypeOf(Email)).call(this, props));
+	  }
+
+	  _createClass(Email, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { style: this.props.style },
+	        _react2.default.createElement(
+	          "svg",
+	          { xmlns: "http://www.w3.org/2000/svg", fill: this.props.color, height: this.props.height, viewBox: "0 0 24 24", width: this.props.width },
+	          _react2.default.createElement("path", { d: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" }),
+	          _react2.default.createElement("path", { d: "M0 0h24v24H0z", fill: "none" })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Email;
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {}
+	}, _temp);
+	exports.default = Email;
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _class, _temp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Phone = (_temp = _class = function (_Component) {
+	  _inherits(Phone, _Component);
+
+	  function Phone(props) {
+	    _classCallCheck(this, Phone);
+
+	    return _possibleConstructorReturn(this, (Phone.__proto__ || Object.getPrototypeOf(Phone)).call(this, props));
+	  }
+
+	  _createClass(Phone, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { style: this.props.style },
+	        _react2.default.createElement(
+	          "svg",
+	          { xmlns: "http://www.w3.org/2000/svg", fill: this.props.color, height: this.props.height, viewBox: "0 0 24 24", width: this.props.width },
+	          _react2.default.createElement("path", { d: "M0 0h24v24H0z", fill: "none" }),
+	          _react2.default.createElement("path", { d: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Phone;
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {}
+	}, _temp);
+	exports.default = Phone;
 
 /***/ })
 /******/ ]);
