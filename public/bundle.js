@@ -28717,7 +28717,9 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { style: container },
+	        { style: container, onClick: function onClick() {
+	            return window.open('/docs/Resume.pdf', '_blank');
+	          } },
 	        _react2.default.createElement(
 	          'svg',
 	          { xmlns: 'http://www.w3.org/2000/svg',
