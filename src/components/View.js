@@ -8,7 +8,8 @@ export default class View extends Component {
     super(props);
     this.state = {
       y: 0,
-      windowWidth: window.innerWidth
+      windowWidth: window.innerWidth,
+      screenWidth: screen.width
     };
     this.handleScroll=this.handleScroll.bind(this);
     this.handleResize=this.handleResize.bind(this);
@@ -31,12 +32,12 @@ export default class View extends Component {
   }
 
   handleResize() {
-    this.setState({ windowWidth: window.innerWidth });
+    this.setState({ windowWidth: window.innerWidth, screenWidth: screen.width });
   }
 
 
   render() {
-    const viewPort = (this.state.windowWidth < 960)
+    const viewPort = (this.state.windowWidth < 960 || this.state.screenWidth < 465)
       ? 'phone'
       : ( this.state.windowWidth >= 960 && this.state.windowWidth < 1024)
         ? 'tablet'

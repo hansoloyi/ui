@@ -26860,7 +26860,8 @@
 
 	    _this.state = {
 	      y: 0,
-	      windowWidth: window.innerWidth
+	      windowWidth: window.innerWidth,
+	      screenWidth: screen.width
 	    };
 	    _this.handleScroll = _this.handleScroll.bind(_this);
 	    _this.handleResize = _this.handleResize.bind(_this);
@@ -26889,12 +26890,12 @@
 	  }, {
 	    key: 'handleResize',
 	    value: function handleResize() {
-	      this.setState({ windowWidth: window.innerWidth });
+	      this.setState({ windowWidth: window.innerWidth, screenWidth: screen.width });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var viewPort = this.state.windowWidth < 960 ? 'phone' : this.state.windowWidth >= 960 && this.state.windowWidth < 1024 ? 'tablet' : 'desktop';
+	      var viewPort = this.state.windowWidth < 960 || this.state.screenWidth < 465 ? 'phone' : this.state.windowWidth >= 960 && this.state.windowWidth < 1024 ? 'tablet' : 'desktop';
 
 	      return _react2.default.createElement(
 	        'div',
