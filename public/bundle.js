@@ -68,11 +68,11 @@
 
 	var _Blog2 = _interopRequireDefault(_Blog);
 
-	var _Resume = __webpack_require__(242);
+	var _Resume = __webpack_require__(243);
 
 	var _Resume2 = _interopRequireDefault(_Resume);
 
-	var _Contact = __webpack_require__(244);
+	var _Contact = __webpack_require__(245);
 
 	var _Contact2 = _interopRequireDefault(_Contact);
 
@@ -20409,20 +20409,6 @@
 	      return emptyFunction.thatReturnsNull;
 	    }
 
-	    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-	      var checker = arrayOfTypeCheckers[i];
-	      if (typeof checker !== 'function') {
-	        warning(
-	          false,
-	          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
-	          'received %s at index %s.',
-	          getPostfixForTypeWarning(checker),
-	          i
-	        );
-	        return emptyFunction.thatReturnsNull;
-	      }
-	    }
-
 	    function validate(props, propName, componentName, location, propFullName) {
 	      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
 	        var checker = arrayOfTypeCheckers[i];
@@ -20555,9 +20541,6 @@
 	  // This handles more types than `getPropType`. Only used for error messages.
 	  // See `createPrimitiveTypeChecker`.
 	  function getPreciseType(propValue) {
-	    if (typeof propValue === 'undefined' || propValue === null) {
-	      return '' + propValue;
-	    }
 	    var propType = getPropType(propValue);
 	    if (propType === 'object') {
 	      if (propValue instanceof Date) {
@@ -20567,23 +20550,6 @@
 	      }
 	    }
 	    return propType;
-	  }
-
-	  // Returns a string that is postfixed to a warning about an invalid type.
-	  // For example, "undefined" or "of type array"
-	  function getPostfixForTypeWarning(value) {
-	    var type = getPreciseType(value);
-	    switch (type) {
-	      case 'array':
-	      case 'object':
-	        return 'an ' + type;
-	      case 'boolean':
-	      case 'date':
-	      case 'regexp':
-	        return 'a ' + type;
-	      default:
-	        return type;
-	    }
 	  }
 
 	  // Returns class name of the object, if any.
@@ -26856,6 +26822,8 @@
 	});
 	exports.default = undefined;
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -26891,20 +26859,24 @@
 	    var _this = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
 
 	    _this.state = {
-	      y: 0
+	      y: 0,
+	      windowWidth: window.innerWidth
 	    };
 	    _this.handleScroll = _this.handleScroll.bind(_this);
+	    _this.handleResize = _this.handleResize.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(View, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      window.addEventListener('resize', this.handleResize);
 	      window.addEventListener('scroll', this.handleScroll);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
+	      window.removeEventListener('resize', this.handleResize);
 	      window.removeEventListener('scroll', this.handleScroll);
 	    }
 	  }, {
@@ -26915,15 +26887,22 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleResize',
+	    value: function handleResize() {
+	      this.setState({ windowWidth: window.innerWidth });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var viewPort = this.state.windowWidth < 960 ? 'phone' : this.state.windowWidth >= 960 && this.state.windowWidth < 1024 ? 'tablet' : 'desktop';
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_Header2.default, null),
-	        _react2.default.createElement(_Nav2.default, null),
-	        _react2.default.cloneElement(this.props.children),
-	        this.state.y > 50 ? _react2.default.createElement(_TopButton2.default, null) : null
+	        _react2.default.createElement(_Header2.default, { viewPort: viewPort }),
+	        _react2.default.createElement(_Nav2.default, { viewPort: viewPort }),
+	        _react2.default.cloneElement(this.props.children, _extends({}, this.props, { viewPort: viewPort })),
+	        this.state.y > 50 ? _react2.default.createElement(_TopButton2.default, { viewPort: viewPort }) : null
 	      );
 	    }
 	  }]);
@@ -27531,7 +27510,7 @@
 
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: me },
+	        { style: me, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -27571,7 +27550,7 @@
 
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: summary },
+	        { style: summary, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -27623,7 +27602,7 @@
 
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: hobbies },
+	        { style: hobbies, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -27687,7 +27666,7 @@
 
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: location },
+	        { style: location, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -27795,12 +27774,13 @@
 	    value: function render() {
 	      var innerStyle = styles.innerStyle;
 
+	      var sty = this.props.viewPort != 'desktop' ? Object.assign({}, innerStyle, { width: '100%' }) : innerStyle;
 	      return _react2.default.createElement(
 	        'div',
 	        { style: this.props.style },
 	        _react2.default.createElement(
 	          'div',
-	          { style: innerStyle },
+	          { style: sty },
 	          _react2.default.cloneElement(this.props.children)
 	        )
 	      );
@@ -27811,7 +27791,8 @@
 	}(_react.Component), _class.defaultProps = {
 	  style: {
 	    backgroundColor: '#000'
-	  }
+	  },
+	  viewPort: 'desktop'
 	}, _temp);
 	exports.default = Layer;
 
@@ -27962,7 +27943,7 @@
 
 	var _styles = __webpack_require__(232);
 
-	var _blog = __webpack_require__(249);
+	var _blog = __webpack_require__(242);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27991,6 +27972,7 @@
 	    fontSize: '21px'
 	  },
 	  blogSection: {
+	    marginLeft: '15px',
 	    paddingTop: '40px',
 	    paddingBottom: '20px',
 	    borderBottom: '1px solid ' + _styles.colors.lightGray
@@ -28011,7 +27993,8 @@
 	  wholeBlog: {
 	    marginTop: '20px',
 	    letterSpacing: '1px',
-	    color: _styles.colors.darkGray
+	    color: _styles.colors.darkGray,
+	    marginLeft: '15px'
 	  }
 	};
 
@@ -28081,7 +28064,7 @@
 	        null,
 	        _react2.default.createElement(
 	          _Layer2.default,
-	          { style: container },
+	          { style: container, viewPort: this.props.viewPort },
 	          _react2.default.createElement(
 	            'div',
 	            { style: item },
@@ -28090,12 +28073,8 @@
 	        ),
 	        _react2.default.createElement(
 	          _Layer2.default,
-	          { style: layer },
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            first
-	          )
+	          { style: layer, viewPort: this.props.viewPort },
+	          first
 	        )
 	      );
 	    }
@@ -28108,6 +28087,17 @@
 
 /***/ }),
 /* 242 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var blog = exports.blog = "hello world";
+
+/***/ }),
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28129,7 +28119,7 @@
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
-	var _Download = __webpack_require__(243);
+	var _Download = __webpack_require__(244);
 
 	var _Download2 = _interopRequireDefault(_Download);
 
@@ -28182,7 +28172,8 @@
 	  resumeSection: {
 	    paddingTop: '40px',
 	    paddingBottom: '20px',
-	    borderBottom: '1px solid ' + _styles.colors.lightGray
+	    borderBottom: '1px solid ' + _styles.colors.lightGray,
+	    marginLeft: '15px'
 	  },
 	  educationSubText: {
 	    letterSpacing: '1px',
@@ -28257,9 +28248,10 @@
 	          layer1Text = styles.layer1Text,
 	          layer1Container = styles.layer1Container;
 
+
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: layer1 },
+	        { style: layer1, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
 	          { style: layer1Container },
@@ -28283,6 +28275,7 @@
 	          resumeSection = styles.resumeSection,
 	          educationSubText = styles.educationSubText,
 	          educationSubText2 = styles.educationSubText2;
+
 
 	      return _react2.default.createElement(
 	        'div',
@@ -28561,7 +28554,7 @@
 
 	      return _react2.default.createElement(
 	        _Layer2.default,
-	        { style: layer2 },
+	        { style: layer2, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -28591,7 +28584,7 @@
 	exports.default = About;
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28661,7 +28654,7 @@
 	exports.default = Download;
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28683,19 +28676,19 @@
 
 	var _styles = __webpack_require__(232);
 
-	var _Facebook = __webpack_require__(245);
+	var _Facebook = __webpack_require__(246);
 
 	var _Facebook2 = _interopRequireDefault(_Facebook);
 
-	var _Linkedin = __webpack_require__(246);
+	var _Linkedin = __webpack_require__(247);
 
 	var _Linkedin2 = _interopRequireDefault(_Linkedin);
 
-	var _Email = __webpack_require__(247);
+	var _Email = __webpack_require__(248);
 
 	var _Email2 = _interopRequireDefault(_Email);
 
-	var _Phone = __webpack_require__(248);
+	var _Phone = __webpack_require__(249);
 
 	var _Phone2 = _interopRequireDefault(_Phone);
 
@@ -28780,7 +28773,7 @@
 	        null,
 	        _react2.default.createElement(
 	          _Layer2.default,
-	          { style: contact },
+	          { style: contact, viewPort: this.props.viewPort },
 	          _react2.default.createElement(
 	            'div',
 	            { style: item },
@@ -28789,7 +28782,7 @@
 	        ),
 	        _react2.default.createElement(
 	          _Layer2.default,
-	          { style: medias },
+	          { style: medias, viewPort: this.props.viewPort },
 	          _react2.default.createElement(
 	            'div',
 	            null,
@@ -28885,7 +28878,7 @@
 	exports.default = Contact;
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28949,7 +28942,7 @@
 	exports.default = Facebook;
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29011,7 +29004,7 @@
 	exports.default = Linkedin;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29072,7 +29065,7 @@
 	exports.default = Email;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29131,17 +29124,6 @@
 	  style: {}
 	}, _temp);
 	exports.default = Phone;
-
-/***/ }),
-/* 249 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var blog = exports.blog = "hello world";
 
 /***/ })
 /******/ ]);

@@ -12,7 +12,8 @@ export default class Layer extends Component {
   static defaultProps = {
     style: {
       backgroundColor: '#000'
-    }
+    },
+    viewPort: 'desktop'
   };
 
   constructor(props) {
@@ -21,9 +22,10 @@ export default class Layer extends Component {
 
   render() {
     const { innerStyle } = styles;
+    const sty = (this.props.viewPort != 'desktop') ? Object.assign({}, innerStyle, { width: '100%' }) : innerStyle;
     return (
       <div style={this.props.style}>
-        <div style={innerStyle}>
+        <div style={sty}>
           {React.cloneElement(this.props.children)}
         </div>
       </div>

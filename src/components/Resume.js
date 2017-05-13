@@ -44,7 +44,8 @@ const styles = {
   resumeSection: {
     paddingTop: '40px',
     paddingBottom: '20px',
-    borderBottom: `1px solid ${colors.lightGray}`
+    borderBottom: `1px solid ${colors.lightGray}`,
+    marginLeft: '15px'
   },
   educationSubText: {
     letterSpacing: '1px',
@@ -128,8 +129,9 @@ export default class About extends Component {
 
   renderDownload() {
     const { layer1, item, iconText, layer1Text, layer1Container } = styles;
+
     return (
-      <Layer style={layer1}>
+      <Layer style={layer1} viewPort={this.props.viewPort}>
         <div style={layer1Container}>
           <div style={layer1Text}>
             DOWNLOAD
@@ -144,6 +146,7 @@ export default class About extends Component {
 
   education() {
     const { resumeTitle, resumeSection, educationSubText, educationSubText2 } = styles;
+
     return (
       <div style={resumeSection}>
         <div style={resumeTitle}> EDUCATION </div>
@@ -244,7 +247,7 @@ export default class About extends Component {
   renderResume() {
     const { layer2 } = styles;
     return (
-      <Layer style={layer2}>
+      <Layer style={layer2} viewPort={this.props.viewPort}>
         <div>
           {this.education()}
           {this.skills()}

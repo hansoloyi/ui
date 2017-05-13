@@ -59,12 +59,12 @@ export default class Contact extends Component {
     const phoneHovered = (this.state.phoneHovered) ? mediaSub : hover;
     return (
       <div>
-        <Layer style={contact}>
+        <Layer style={contact} viewPort={this.props.viewPort}>
           <div style={item}>
             CALL ME, BEEP ME IF YOU WANT TO REACH ME
           </div>
         </Layer>
-        <Layer style={medias}>
+        <Layer style={medias} viewPort={this.props.viewPort}>
           <div>
             <div style={mediaItem}
               onMouseOver={() => this.setState({ emailHovered: true })}

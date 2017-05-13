@@ -7,16 +7,20 @@ export default class View extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      y: 0
+      y: 0,
+      windowWidth: window.innerWidth
     };
     this.handleScroll=this.handleScroll.bind(this);
+    this.handleResize=this.handleResize.bind(this);
   }
 
   componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
     window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
     window.removeEventListener('scroll', this.handleScroll);
   }
 
@@ -26,13 +30,24 @@ export default class View extends Component {
     });
   }
 
+  handleResize() {
+    this.setState({ windowWidth: window.innerWidth });
+  }
+
+
   render() {
+    const viewPort = (this.state.windowWidth < 960)
+      ? 'phone'
+      : ( this.state.windowWidth >= 960 && this.state.windowWidth < 1024)
+        ? 'tablet'
+        : 'desktop';
+
     return (
       <div>
-        <Header />
-        <Nav />
-        {React.cloneElement(this.props.children)}
-        {(this.state.y > 50) ? <TopButton /> : null}
+        <Header viewPort={viewPort}/>
+        <Nav viewPort={viewPort} />
+        {React.cloneElement(this.props.children, { ...this.props, viewPort: viewPort })}
+        {(this.state.y > 50) ? <TopButton  viewPort={viewPort}/> : null}
       </div>
     );
   }

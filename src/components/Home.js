@@ -94,7 +94,7 @@ export default class Home extends Component {
   renderMe() {
     const { me, meImg, item, meText, meItem } = styles;
     return (
-      <Layer style={me}>
+      <Layer style={me} viewPort={this.props.viewPort}>
         <div>
           <div style={meItem}>
             <div style={meImg}>
@@ -113,7 +113,7 @@ export default class Home extends Component {
   renderSummary() {
     const { summary, item, summaryIconText, summaryText } = styles;
     return (
-      <Layer style={summary}>
+      <Layer style={summary} viewPort={this.props.viewPort}>
         <div>
           <div style={item}>
             <Code color={colors.lightGray} height={50} width={50} />
@@ -133,7 +133,7 @@ export default class Home extends Component {
   renderHobbies() {
     const { hobbies, hobbiesItem, hobbiesImg, hobbiesTitle, hobbiesText } = styles;
     return (
-      <Layer style={hobbies}>
+      <Layer style={hobbies} viewPort={this.props.viewPort}>
         <div>
           <div style={hobbiesTitle}> SOME THINGS I LIKE TO DO </div>
           <div style={hobbiesItem}>
@@ -162,7 +162,7 @@ export default class Home extends Component {
   renderLocation() {
     const { location, item, locationIconText, locationText } = styles;
     return (
-      <Layer style={location}>
+      <Layer style={location} viewPort={this.props.viewPort}>
         <div>
           <div style={item}>
             <div style={locationText}> BORN IN KOREA </div>

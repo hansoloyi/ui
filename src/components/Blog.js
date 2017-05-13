@@ -21,6 +21,7 @@ const styles = {
     fontSize: '21px',
   },
   blogSection: {
+    marginLeft: '15px',
     paddingTop: '40px',
     paddingBottom: '20px',
     borderBottom: `1px solid ${colors.lightGray}`
@@ -41,7 +42,8 @@ const styles = {
   wholeBlog: {
     marginTop: '20px',
     letterSpacing: '1px',
-    color: colors.darkGray
+    color: colors.darkGray,
+    marginLeft: '15px'
   }
 };
 
@@ -71,15 +73,13 @@ export default class Blog extends Component {
     const { container, item, layer } = styles;
     return (
       <div>
-        <Layer style={container}>
+        <Layer style={container} viewPort={this.props.viewPort}>
           <div style={item}>
             MY THOUGHTS
           </div>
         </Layer>
-        <Layer style={layer}>
-          <div>
-            {first}
-          </div>
+        <Layer style={layer} viewPort={this.props.viewPort}>
+          {first}
         </Layer>
       </div>
     );
