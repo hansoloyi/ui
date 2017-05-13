@@ -14,8 +14,9 @@ const styles = {
     width:      '1024px'
   },
   name: {
+    marginLeft: '1%',
     borderRight:   `1px solid ${colors.lightGray}`,
-    paddingRight:  '4%',
+    paddingRight:  '3%',
     letterSpacing: '4px',
     fontSize:      '24px',
     display:       'inline-block',
@@ -23,7 +24,7 @@ const styles = {
   },
   desc: {
     letterSpacing: '2px',
-    marginLeft:    '4%',
+    paddingLeft:    '3%',
     display:       'inline-block'
   }
 };
@@ -35,12 +36,15 @@ export default class Header extends Component {
 
   render() {
     const { container, text, name, desc } = styles;
+    const respName = (this.props.viewPort == 'phone') ? Object.assign({}, name, {paddingRight: '2px'}) : name;
+    const respDesc = (this.props.viewPort == 'phone') ? Object.assign({}, desc, {paddingLeft: '2px'}) : desc;
+    const respText = (this.props.viewPort == 'phone') ? Object.assign({}, desc, {width: '100%'}) : text;
     return (
       <div style={container}>
-        <div style={text}>
-          <div style={name}> HANSOL YI </div>
-          <div style={desc}>
-            A LITTLE ABOUT ME...
+        <div style={respText}>
+          <div style={respName}> HANSOL YI </div>
+          <div style={respDesc}>
+            A LITTLE ABOUT ME
           </div>
         </div>
       </div>

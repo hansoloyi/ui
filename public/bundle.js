@@ -26952,8 +26952,9 @@
 	    width: '1024px'
 	  },
 	  name: {
+	    marginLeft: '1%',
 	    borderRight: '1px solid ' + _styles.colors.lightGray,
-	    paddingRight: '4%',
+	    paddingRight: '3%',
 	    letterSpacing: '4px',
 	    fontSize: '24px',
 	    display: 'inline-block',
@@ -26961,7 +26962,7 @@
 	  },
 	  desc: {
 	    letterSpacing: '2px',
-	    marginLeft: '4%',
+	    paddingLeft: '3%',
 	    display: 'inline-block'
 	  }
 	};
@@ -26983,21 +26984,24 @@
 	          name = styles.name,
 	          desc = styles.desc;
 
+	      var respName = this.props.viewPort == 'phone' ? Object.assign({}, name, { paddingRight: '2px' }) : name;
+	      var respDesc = this.props.viewPort == 'phone' ? Object.assign({}, desc, { paddingLeft: '2px' }) : desc;
+	      var respText = this.props.viewPort == 'phone' ? Object.assign({}, desc, { width: '100%' }) : text;
 	      return _react2.default.createElement(
 	        'div',
 	        { style: container },
 	        _react2.default.createElement(
 	          'div',
-	          { style: text },
+	          { style: respText },
 	          _react2.default.createElement(
 	            'div',
-	            { style: name },
+	            { style: respName },
 	            ' HANSOL YI '
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: desc },
-	            'A LITTLE ABOUT ME...'
+	            { style: respDesc },
+	            'A LITTLE ABOUT ME'
 	          )
 	        )
 	      );
@@ -27051,6 +27055,10 @@
 
 	var _Button2 = _interopRequireDefault(_Button);
 
+	var _Menu = __webpack_require__(250);
+
+	var _Menu2 = _interopRequireDefault(_Menu);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27083,6 +27091,22 @@
 	    paddingTop: '5px',
 	    paddingBottom: '5px',
 	    letterSpacing: '2px'
+	  },
+	  smallButton: {
+	    border: '1px solid ' + _styles.colors.lightGray,
+	    color: _styles.colors.white,
+	    textAlign: 'center',
+	    width: '100%',
+	    cursor: 'pointer',
+	    paddingTop: '10px',
+	    paddingBottom: '10px',
+	    letterSpacing: '2px',
+	    display: 'block',
+	    backgroundColor: 'black'
+	  },
+	  someOther: {
+	    zIndex: '10',
+	    display: 'none'
 	  }
 	};
 
@@ -27106,26 +27130,72 @@
 	  function Nav(props) {
 	    _classCallCheck(this, Nav);
 
-	    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+	    _this.state = {
+	      menuClicked: false
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Nav, [{
-	    key: 'render',
-	    value: function render() {
+	    key: 'bigNav',
+	    value: function bigNav() {
 	      var container = styles.container,
 	          navContainer = styles.navContainer,
 	          button = styles.button;
 
 	      return _react2.default.createElement(
 	        'div',
-	        { style: container },
+	        { style: navContainer },
+	        navItems.map(function (nav, idx) {
+	          return _react2.default.createElement(_Button2.default, { key: idx, style: button, text: nav.text, link: nav.link });
+	        })
+	      );
+	    }
+	  }, {
+	    key: 'smallNav',
+	    value: function smallNav() {
+	      var _this2 = this;
+
+	      var smallButton = styles.smallButton,
+	          someOther = styles.someOther;
+
+
+	      var display = this.state.menuClicked ? Object.assign({}, someOther, { display: 'block' }) : someOther;
+	      return _react2.default.createElement(
+	        'div',
+	        { style: { marginLeft: '15px', width: '50%', height: '30px', zIndex: '100' } },
 	        _react2.default.createElement(
 	          'div',
-	          { style: navContainer },
+	          { onClick: function onClick() {
+	              return _this2.setState({ menuClicked: !_this2.state.menuClicked });
+	            } },
+	          _react2.default.createElement(_Menu2.default, { color: _styles.colors.white, width: 40, height: 35 })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: display },
 	          navItems.map(function (nav, idx) {
-	            return _react2.default.createElement(_Button2.default, { key: idx, style: button, text: nav.text, link: nav.link });
+	            return _react2.default.createElement(_Button2.default, { key: idx, style: smallButton, text: nav.text, link: nav.link, onClick: function onClick() {
+	                _this2.setState({ menuClicked: false });
+	              } });
 	          })
 	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var container = styles.container,
+	          navContainer = styles.navContainer,
+	          button = styles.button;
+
+	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, container, { justifyContent: 'flex-start' }) : container;
+	      return _react2.default.createElement(
+	        'div',
+	        { style: respStyle },
+	        this.props.viewPort == 'phone' ? this.smallNav() : this.bigNav()
 	      );
 	    }
 	  }]);
@@ -27190,7 +27260,7 @@
 
 	      return _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: this.props.link, onlyActiveOnIndex: true, style: this.props.style, activeStyle: active },
+	        { to: this.props.link, onlyActiveOnIndex: true, style: this.props.style, activeStyle: active, onClick: this.props.onClick },
 	        this.props.text
 	      );
 	    }
@@ -27508,6 +27578,7 @@
 	          meText = styles.meText,
 	          meItem = styles.meItem;
 
+	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, meItem, { display: 'block', width: '100%' }) : meItem;
 	      return _react2.default.createElement(
 	        _Layer2.default,
 	        { style: me, viewPort: this.props.viewPort },
@@ -27516,7 +27587,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { style: meItem },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: meImg },
@@ -27525,7 +27596,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: meItem },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: meText },
@@ -27548,6 +27619,7 @@
 	          summaryIconText = styles.summaryIconText,
 	          summaryText = styles.summaryText;
 
+	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, item, { display: 'block', width: '100%' }) : item;
 	      return _react2.default.createElement(
 	        _Layer2.default,
 	        { style: summary, viewPort: this.props.viewPort },
@@ -27556,7 +27628,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { style: item },
+	            { style: respStyle },
 	            _react2.default.createElement(_Code2.default, { color: _styles.colors.lightGray, height: 50, width: 50 }),
 	            _react2.default.createElement(
 	              'div',
@@ -27566,7 +27638,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: item },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: summaryText },
@@ -27600,6 +27672,7 @@
 	          hobbiesTitle = styles.hobbiesTitle,
 	          hobbiesText = styles.hobbiesText;
 
+	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, hobbiesItem, { display: 'block', width: '100%' }) : hobbiesItem;
 	      return _react2.default.createElement(
 	        _Layer2.default,
 	        { style: hobbies, viewPort: this.props.viewPort },
@@ -27613,7 +27686,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: hobbiesItem },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: hobbiesImg },
@@ -27627,7 +27700,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: hobbiesItem },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: hobbiesImg },
@@ -27641,7 +27714,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: hobbiesItem },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: hobbiesImg },
@@ -27664,6 +27737,7 @@
 	          locationIconText = styles.locationIconText,
 	          locationText = styles.locationText;
 
+	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, item, { display: 'block', width: '100%' }) : item;
 	      return _react2.default.createElement(
 	        _Layer2.default,
 	        { style: location, viewPort: this.props.viewPort },
@@ -27672,7 +27746,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { style: item },
+	            { style: respStyle },
 	            _react2.default.createElement(
 	              'div',
 	              { style: locationText },
@@ -27691,7 +27765,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: item },
+	            { style: respStyle },
 	            _react2.default.createElement(_Pin2.default, { color: _styles.colors.black, height: 50, width: 50 }),
 	            _react2.default.createElement(
 	              'div',
@@ -28764,10 +28838,10 @@
 	          button = styles.button;
 
 	      var hover = Object.assign({}, mediaSub, { display: 'none' });
-	      var emailHovered = this.state.emailHovered ? mediaSub : hover;
-	      var fbHovered = this.state.fbHovered ? mediaSub : hover;
-	      var liHovered = this.state.liHovered ? mediaSub : hover;
-	      var phoneHovered = this.state.phoneHovered ? mediaSub : hover;
+	      var emailHovered = this.state.emailHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
+	      var fbHovered = this.state.fbHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
+	      var liHovered = this.state.liHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
+	      var phoneHovered = this.state.phoneHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -28803,7 +28877,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { style: emailHovered },
-	                'HANSOLO.YI@GMAIL.COM (COPY AND PASTE)'
+	                'HANSOLO.YI@GMAIL.COM'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -28823,7 +28897,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { style: fbHovered },
-	                'NON PROFESSIONAL INQUIRIES'
+	                'SOCIAL INQUIRIES'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -28863,7 +28937,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { style: phoneHovered },
-	                'JUST KIDDING DON\'T CALL ME'
+	                'JK DON\'T CALL ME'
 	              )
 	            )
 	          )
@@ -29124,6 +29198,69 @@
 	  style: {}
 	}, _temp);
 	exports.default = Phone;
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _class, _temp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Menu = (_temp = _class = function (_Component) {
+	  _inherits(Menu, _Component);
+
+	  function Menu(props) {
+	    _classCallCheck(this, Menu);
+
+	    return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+	  }
+
+	  _createClass(Menu, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { style: this.props.style },
+	        _react2.default.createElement(
+	          'svg',
+	          { xmlns: 'http://www.w3.org/2000/svg', fill: this.props.color, height: this.props.height, viewBox: '0 0 24 24', width: this.props.width },
+	          _react2.default.createElement('path', { d: 'M0 0h24v24H0z', fill: 'none' }),
+	          _react2.default.createElement('path', { d: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Menu;
+	}(_react.Component), _class.defaultProps = {
+	  color: "#000",
+	  height: 24,
+	  width: 24,
+	  style: {
+	    cursor: 'pointer'
+	  }
+	}, _temp);
+	exports.default = Menu;
 
 /***/ })
 /******/ ]);

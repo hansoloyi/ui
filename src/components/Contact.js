@@ -53,10 +53,10 @@ export default class Contact extends Component {
   render() {
     const { contact, item, medias, mediaItem, mediaText, mediaSub, button } = styles;
     const hover = Object.assign({}, mediaSub, { display: 'none' })
-    const emailHovered = (this.state.emailHovered) ? mediaSub : hover;
-    const fbHovered = (this.state.fbHovered) ? mediaSub : hover;
-    const liHovered = (this.state.liHovered) ? mediaSub : hover;
-    const phoneHovered = (this.state.phoneHovered) ? mediaSub : hover;
+    const emailHovered = (this.state.emailHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
+    const fbHovered = (this.state.fbHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
+    const liHovered = (this.state.liHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
+    const phoneHovered = (this.state.phoneHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
     return (
       <div>
         <Layer style={contact} viewPort={this.props.viewPort}>
@@ -73,7 +73,7 @@ export default class Contact extends Component {
                 <Email width={60} height={60} color={'#000'} style={button}/>
               </div>
               <div style={emailHovered}>
-                HANSOLO.YI@GMAIL.COM (COPY AND PASTE)
+                HANSOLO.YI@GMAIL.COM
               </div>
             </div>
             <div style={mediaItem}
@@ -83,7 +83,7 @@ export default class Contact extends Component {
                 <Facebook width={50} height={50} color={'#000'} style={button}/>
               </div>
               <div style={fbHovered}>
-                NON PROFESSIONAL INQUIRIES
+                SOCIAL INQUIRIES
               </div>
             </div>
             <div style={mediaItem}
@@ -103,7 +103,7 @@ export default class Contact extends Component {
                 <Phone width={60} height={60} color={'#000'} style={button}/>
               </div>
               <div style={phoneHovered}>
-                JUST KIDDING DON&#39;T CALL ME
+                JK DON&#39;T CALL ME
               </div>
             </div>
           </div>

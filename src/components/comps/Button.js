@@ -24,7 +24,7 @@ export default class Button extends Component {
     const { active } = styles;
 
     return (
-      <Link to={this.props.link} onlyActiveOnIndex style={this.props.style} activeStyle={active}>
+      <Link to={this.props.link} onlyActiveOnIndex style={this.props.style} activeStyle={active} onClick={this.props.onClick}>
         {this.props.text}
       </Link>
     );

@@ -93,15 +93,18 @@ export default class Home extends Component {
 
   renderMe() {
     const { me, meImg, item, meText, meItem } = styles;
+    const respStyle = (this.props.viewPort == 'phone')
+      ? Object.assign({}, meItem, { display: 'block', width: '100%' })
+      : meItem;
     return (
       <Layer style={me} viewPort={this.props.viewPort}>
         <div>
-          <div style={meItem}>
+          <div style={respStyle}>
             <div style={meImg}>
               <img src="/images/hansol.png" width="100%" id="me"/>
             </div>
           </div>
-          <div style={meItem}>
+          <div style={respStyle}>
             <div style={meText}> HELLO WORLD, </div>
             <div style={meText}> I&#39;M HANSOL </div>
           </div>
@@ -112,14 +115,17 @@ export default class Home extends Component {
 
   renderSummary() {
     const { summary, item, summaryIconText, summaryText } = styles;
+    const respStyle = (this.props.viewPort == 'phone')
+      ? Object.assign({}, item, { display: 'block', width: '100%' })
+      : item
     return (
       <Layer style={summary} viewPort={this.props.viewPort}>
         <div>
-          <div style={item}>
+          <div style={respStyle}>
             <Code color={colors.lightGray} height={50} width={50} />
             <div style={summaryIconText}> FULL STACK ENGINEER </div>
           </div>
-          <div style={item}>
+          <div style={respStyle}>
             <div style={summaryText}> FROM MAKING A UI LOOK PRETTY </div>
             <div style={summaryText}> TO STREAM PROCESSING </div>
             <div style={summaryText}> I JUST LIKE BUILDING COOL THINGS </div>
@@ -132,23 +138,26 @@ export default class Home extends Component {
 
   renderHobbies() {
     const { hobbies, hobbiesItem, hobbiesImg, hobbiesTitle, hobbiesText } = styles;
+    const respStyle = (this.props.viewPort == 'phone')
+      ? Object.assign({}, hobbiesItem, { display: 'block', width: '100%' })
+      : hobbiesItem;
     return (
       <Layer style={hobbies} viewPort={this.props.viewPort}>
         <div>
           <div style={hobbiesTitle}> SOME THINGS I LIKE TO DO </div>
-          <div style={hobbiesItem}>
+          <div style={respStyle}>
             <div style={hobbiesImg}>
               <img src="/images/snow.png" width="100%" height="300px" />
             </div>
             <div style={hobbiesText}> SNOWBOARDING </div>
           </div>
-          <div style={hobbiesItem}>
+          <div style={respStyle}>
             <div style={hobbiesImg}>
               <img src="/images/beer.png" width="100%" height="300px" />
             </div>
             <div style={hobbiesText}> A NICE COLD ONE </div>
           </div>
-          <div style={hobbiesItem}>
+          <div style={respStyle}>
             <div style={hobbiesImg}>
               <img src="/images/sports.png" width="100%" height="300px" />
             </div>
@@ -161,15 +170,18 @@ export default class Home extends Component {
 
   renderLocation() {
     const { location, item, locationIconText, locationText } = styles;
+    const respStyle = (this.props.viewPort == 'phone')
+      ? Object.assign({}, item, { display: 'block', width: '100%' })
+      : item;
     return (
       <Layer style={location} viewPort={this.props.viewPort}>
         <div>
-          <div style={item}>
+          <div style={respStyle}>
             <div style={locationText}> BORN IN KOREA </div>
             <div style={locationText}> SAN DIEGO RAISED </div>
             <div style={locationText}> DENVER RESIDING </div>
           </div>
-          <div style={item}>
+          <div style={respStyle}>
             <Pin color={colors.black} height={50} width={50} />
             <div style={locationIconText}> DENVER, CO </div>
           </div>
