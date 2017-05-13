@@ -75,8 +75,9 @@ export default class Nav extends Component {
 
   bigNav() {
     const { container, navContainer, button } = styles;
+    const respCont = (this.props.viewPort != 'desktop') ? Object.assign({}, navContainer, { width: '100%'}) : navContainer;
     return (
-      <div style={navContainer}>
+      <div style={respCont}>
         {navItems.map((nav, idx) => {
           return (<Button key={idx} style={button} text={nav.text} link={nav.link}/>)
         })}
@@ -86,16 +87,18 @@ export default class Nav extends Component {
 
   smallNav() {
     const { smallButton, someOther } = styles;
+    const respSmallButton = (this.props.viewPort == 'phone') ? Object.assign({}, smallButton, { paddingTop: '30px', paddingBottom: '30px', fontSize: '28px'}) : smallButton;
 
     const display = (this.state.menuClicked) ? Object.assign({}, someOther, { display: 'block' }) : someOther;
+    const menuSize = (this.props.viewPort == 'phone') ? 60 : 35;
     return (
       <div style={{marginLeft: '15px', width: '50%', height: '30px', zIndex: '100'}}>
         <div onClick={() => this.setState({menuClicked: !this.state.menuClicked})}>
-          <Menu color={colors.white} width={40} height={35} />
+          <Menu color={colors.white} width={menuSize} height={menuSize} />
         </div>
         <div style={display}>
           {navItems.map((nav, idx) => {
-            return (<Button key={idx} style={smallButton} text={nav.text} link={nav.link} onClick={()=>{this.setState({menuClicked:false})}}/>)
+            return (<Button key={idx} style={respSmallButton} text={nav.text} link={nav.link} onClick={()=>{this.setState({menuClicked:false})}}/>)
           })}
         </div>
       </div>
@@ -104,7 +107,7 @@ export default class Nav extends Component {
 
   render() {
     const { container, navContainer, button } = styles;
-    const respStyle = (this.props.viewPort == 'phone') ? Object.assign({}, container, { justifyContent: 'flex-start' }) : container;
+    const respStyle = (this.props.viewPort == 'phone') ? Object.assign({}, container, { justifyContent: 'flex-start', paddingTop: '30px', paddingBottom: '50px' }) : container;
     return(
       <div style={respStyle}>
         {(this.props.viewPort == 'phone') ? this.smallNav() : this.bigNav()}

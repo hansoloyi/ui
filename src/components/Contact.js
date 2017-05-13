@@ -57,10 +57,12 @@ export default class Contact extends Component {
     const fbHovered = (this.state.fbHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
     const liHovered = (this.state.liHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
     const phoneHovered = (this.state.phoneHovered || this.props.viewPort == 'phone') ? mediaSub : hover;
+
+    const textResp = (this.props.viewPort=='phone') ? Object.assign({}, item, { fontSize: '30px', paddingTop: '30px', paddingBottom: '30px'}) : item;
     return (
       <div>
         <Layer style={contact} viewPort={this.props.viewPort}>
-          <div style={item}>
+          <div style={textResp}>
             CALL ME, BEEP ME IF YOU WANT TO REACH ME
           </div>
         </Layer>

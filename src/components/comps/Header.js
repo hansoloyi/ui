@@ -4,7 +4,8 @@ import { colors } from '../../shared/styles';
 const styles = {
   container: {
     backgroundColor: colors.white,
-    height:          '50px'
+    height:          '50px',
+    verticalAlign: 'center',
   },
   text: {
     lineHeight: '50px',
@@ -36,11 +37,12 @@ export default class Header extends Component {
 
   render() {
     const { container, text, name, desc } = styles;
-    const respName = (this.props.viewPort == 'phone') ? Object.assign({}, name, {paddingRight: '2px'}) : name;
-    const respDesc = (this.props.viewPort == 'phone') ? Object.assign({}, desc, {paddingLeft: '2px'}) : desc;
+    const respName = (this.props.viewPort == 'phone') ? Object.assign({}, name, {fontSize: '42px'}) : name;
+    const respDesc = (this.props.viewPort == 'phone') ? Object.assign({}, desc, {fontSize: '30px'}) : desc;
     const respText = (this.props.viewPort == 'phone') ? Object.assign({}, desc, {width: '100%'}) : text;
+    const respContainer = (this.props.viewPort == 'phone') ? Object.assign({}, container, {paddingTop: '30px', paddingBottom: '20px', width: '100%'}) : container;
     return (
-      <div style={container}>
+      <div style={respContainer}>
         <div style={respText}>
           <div style={respName}> HANSOL YI </div>
           <div style={respDesc}>

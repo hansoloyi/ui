@@ -39,7 +39,7 @@ export default class View extends Component {
   render() {
     const viewPort = (this.state.windowWidth < 960 || this.state.screenWidth < 465)
       ? 'phone'
-      : ( this.state.windowWidth >= 960 && this.state.windowWidth < 1024)
+      : ( this.state.windowWidth >= 960 && this.state.windowWidth < 1024 || (this.state.screenWidth < 1024 && this.state.screenWidth >= 465))
         ? 'tablet'
         : 'desktop';
 

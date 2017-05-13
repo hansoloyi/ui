@@ -26895,7 +26895,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var viewPort = this.state.windowWidth < 960 || this.state.screenWidth < 465 ? 'phone' : this.state.windowWidth >= 960 && this.state.windowWidth < 1024 ? 'tablet' : 'desktop';
+	      var viewPort = this.state.windowWidth < 960 || this.state.screenWidth < 465 ? 'phone' : this.state.windowWidth >= 960 && this.state.windowWidth < 1024 || this.state.screenWidth < 1024 && this.state.screenWidth >= 465 ? 'tablet' : 'desktop';
 
 	      return _react2.default.createElement(
 	        'div',
@@ -26943,7 +26943,8 @@
 	var styles = {
 	  container: {
 	    backgroundColor: _styles.colors.white,
-	    height: '50px'
+	    height: '50px',
+	    verticalAlign: 'center'
 	  },
 	  text: {
 	    lineHeight: '50px',
@@ -26985,12 +26986,13 @@
 	          name = styles.name,
 	          desc = styles.desc;
 
-	      var respName = this.props.viewPort == 'phone' ? Object.assign({}, name, { paddingRight: '2px' }) : name;
-	      var respDesc = this.props.viewPort == 'phone' ? Object.assign({}, desc, { paddingLeft: '2px' }) : desc;
+	      var respName = this.props.viewPort == 'phone' ? Object.assign({}, name, { fontSize: '42px' }) : name;
+	      var respDesc = this.props.viewPort == 'phone' ? Object.assign({}, desc, { fontSize: '30px' }) : desc;
 	      var respText = this.props.viewPort == 'phone' ? Object.assign({}, desc, { width: '100%' }) : text;
+	      var respContainer = this.props.viewPort == 'phone' ? Object.assign({}, container, { paddingTop: '30px', paddingBottom: '20px', width: '100%' }) : container;
 	      return _react2.default.createElement(
 	        'div',
-	        { style: container },
+	        { style: respContainer },
 	        _react2.default.createElement(
 	          'div',
 	          { style: respText },
@@ -27146,9 +27148,10 @@
 	          navContainer = styles.navContainer,
 	          button = styles.button;
 
+	      var respCont = this.props.viewPort != 'desktop' ? Object.assign({}, navContainer, { width: '100%' }) : navContainer;
 	      return _react2.default.createElement(
 	        'div',
-	        { style: navContainer },
+	        { style: respCont },
 	        navItems.map(function (nav, idx) {
 	          return _react2.default.createElement(_Button2.default, { key: idx, style: button, text: nav.text, link: nav.link });
 	        })
@@ -27162,8 +27165,10 @@
 	      var smallButton = styles.smallButton,
 	          someOther = styles.someOther;
 
+	      var respSmallButton = this.props.viewPort == 'phone' ? Object.assign({}, smallButton, { paddingTop: '30px', paddingBottom: '30px', fontSize: '28px' }) : smallButton;
 
 	      var display = this.state.menuClicked ? Object.assign({}, someOther, { display: 'block' }) : someOther;
+	      var menuSize = this.props.viewPort == 'phone' ? 60 : 35;
 	      return _react2.default.createElement(
 	        'div',
 	        { style: { marginLeft: '15px', width: '50%', height: '30px', zIndex: '100' } },
@@ -27172,13 +27177,13 @@
 	          { onClick: function onClick() {
 	              return _this2.setState({ menuClicked: !_this2.state.menuClicked });
 	            } },
-	          _react2.default.createElement(_Menu2.default, { color: _styles.colors.white, width: 40, height: 35 })
+	          _react2.default.createElement(_Menu2.default, { color: _styles.colors.white, width: menuSize, height: menuSize })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { style: display },
 	          navItems.map(function (nav, idx) {
-	            return _react2.default.createElement(_Button2.default, { key: idx, style: smallButton, text: nav.text, link: nav.link, onClick: function onClick() {
+	            return _react2.default.createElement(_Button2.default, { key: idx, style: respSmallButton, text: nav.text, link: nav.link, onClick: function onClick() {
 	                _this2.setState({ menuClicked: false });
 	              } });
 	          })
@@ -27192,7 +27197,7 @@
 	          navContainer = styles.navContainer,
 	          button = styles.button;
 
-	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, container, { justifyContent: 'flex-start' }) : container;
+	      var respStyle = this.props.viewPort == 'phone' ? Object.assign({}, container, { justifyContent: 'flex-start', paddingTop: '30px', paddingBottom: '50px' }) : container;
 	      return _react2.default.createElement(
 	        'div',
 	        { style: respStyle },
@@ -28134,6 +28139,7 @@
 	          item = styles.item,
 	          layer = styles.layer;
 
+	      var textResp = this.props.viewPort == 'phone' ? Object.assign({}, item, { fontSize: '30px', paddingTop: '30px', paddingBottom: '30px' }) : item;
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -28142,7 +28148,7 @@
 	          { style: container, viewPort: this.props.viewPort },
 	          _react2.default.createElement(
 	            'div',
-	            { style: item },
+	            { style: textResp },
 	            'MY THOUGHTS'
 	          )
 	        ),
@@ -28324,21 +28330,25 @@
 	          layer1Container = styles.layer1Container;
 
 
+	      var layer1Resp = this.props.viewPort == 'phone' ? Object.assign({}, layer1Container, { paddingTop: '30px', paddingBottom: '30px' }) : layer1Container;
+	      var textResp = this.props.viewPort == 'phone' ? Object.assign({}, layer1Text, { fontSize: '30px' }) : layer1Text;
+	      var respSize = this.props.viewPort == 'phone' ? 50 : 32;
+
 	      return _react2.default.createElement(
 	        _Layer2.default,
 	        { style: layer1, viewPort: this.props.viewPort },
 	        _react2.default.createElement(
 	          'div',
-	          { style: layer1Container },
+	          { style: layer1Resp },
 	          _react2.default.createElement(
 	            'div',
-	            { style: layer1Text },
+	            { style: textResp },
 	            'DOWNLOAD'
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { style: layer1Text },
-	            _react2.default.createElement(_Download2.default, { height: 32, width: 32, color: _styles.colors.darkGray })
+	            _react2.default.createElement(_Download2.default, { height: respSize, width: respSize, color: _styles.colors.darkGray })
 	          )
 	        )
 	      );
@@ -28843,6 +28853,8 @@
 	      var fbHovered = this.state.fbHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
 	      var liHovered = this.state.liHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
 	      var phoneHovered = this.state.phoneHovered || this.props.viewPort == 'phone' ? mediaSub : hover;
+
+	      var textResp = this.props.viewPort == 'phone' ? Object.assign({}, item, { fontSize: '30px', paddingTop: '30px', paddingBottom: '30px' }) : item;
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -28851,7 +28863,7 @@
 	          { style: contact, viewPort: this.props.viewPort },
 	          _react2.default.createElement(
 	            'div',
-	            { style: item },
+	            { style: textResp },
 	            'CALL ME, BEEP ME IF YOU WANT TO REACH ME'
 	          )
 	        ),

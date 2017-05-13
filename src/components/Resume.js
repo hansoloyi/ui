@@ -130,14 +130,18 @@ export default class About extends Component {
   renderDownload() {
     const { layer1, item, iconText, layer1Text, layer1Container } = styles;
 
+    const layer1Resp = (this.props.viewPort=='phone') ? Object.assign({}, layer1Container, { paddingTop: '30px', paddingBottom: '30px'}) : layer1Container;
+    const textResp = (this.props.viewPort=='phone') ? Object.assign({}, layer1Text, { fontSize: '30px'}) : layer1Text;
+    const respSize = (this.props.viewPort=='phone') ? 50 : 32;
+
     return (
       <Layer style={layer1} viewPort={this.props.viewPort}>
-        <div style={layer1Container}>
-          <div style={layer1Text}>
+        <div style={layer1Resp}>
+          <div style={textResp}>
             DOWNLOAD
           </div>
           <div style={layer1Text}>
-            <Download height={32} width={32} color={colors.darkGray}/>
+            <Download height={respSize} width={respSize} color={colors.darkGray}/>
           </div>
         </div>
       </Layer>

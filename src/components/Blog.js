@@ -71,10 +71,11 @@ export default class Blog extends Component {
   render() {
     const first = this.blog1();
     const { container, item, layer } = styles;
+    const textResp = (this.props.viewPort=='phone') ? Object.assign({}, item, { fontSize: '30px', paddingTop: '30px', paddingBottom: '30px'}) : item;
     return (
       <div>
         <Layer style={container} viewPort={this.props.viewPort}>
-          <div style={item}>
+          <div style={textResp}>
             MY THOUGHTS
           </div>
         </Layer>
